@@ -3,10 +3,10 @@ package intro_to_array_lists;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -23,11 +23,15 @@ public class GuestBook implements ActionListener {
 JPanel panel = new JPanel();
 JButton button = new JButton();
 JButton button2 = new JButton();
+static ArrayList<String> guests = new ArrayList<String>();
 	public static void main(String[] args) {
+		
 		GuestBook q = new GuestBook();
 		q.play();
 	}
 	public void play() {
+
+
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.setVisible(true);
 	frame.add(panel);
@@ -38,7 +42,7 @@ JButton button2 = new JButton();
 	button.addActionListener(this);
 	button2.addActionListener(this);	
 	
-	
+
 	frame.pack();
 	}
 	@Override
@@ -53,14 +57,21 @@ JButton button2 = new JButton();
 		}
 	}
 	public void View() {
-		JOptionPane.showMessageDialog(null, "");
+		String book = "";
+		for (int i = 0; i < guests.size(); i++) {
+			book += "Guest #" + i + ": " + guests.get(i) + "\n";
+		}
+		JOptionPane.showMessageDialog(null, book);
+		
 	}
 	
 	
 	
 	
 	public void add() {
+		
 		String name = JOptionPane.showInputDialog("Insert a guest's name.");
+		guests.add(name);
 	}
 	
 	
